@@ -2,3 +2,5 @@
 dist/
 kbinxml.egg-info/
 build/
+.idea/
+*.class
