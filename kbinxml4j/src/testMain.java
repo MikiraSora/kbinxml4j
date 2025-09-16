@@ -1,3 +1,5 @@
+import SimpleMappingModel.XrpcNodeConverter;
+
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.Arrays;
@@ -7,7 +9,7 @@ public class testMain {
         // replicate Python CLI behaviour
 
         args = new String[]{
-                "C:\\Users\\mikir\\Source\\Repos\\KBinXml.Net\\src\\Tests\\ManualTests\\data\\small.xml"
+                "C:\\Users\\mikir\\Source\\Repos\\KBinXml.Net\\src\\Tests\\ManualTests\\data\\test.bin"
         };
 
         if (args.length < 1) {
@@ -24,6 +26,9 @@ public class testMain {
             OutputStream out = System.out;
             if (KbinXml.isBinaryXml(input)) {
                 String text = xml.toText();
+                var xmlDoc= xml.getDocument();
+                var node = XrpcNodeConverter.ConvertFromXml(xmlDoc);
+                var xmlText = XrpcNodeConverter.ToXmlString(node);
                 out.write(text.getBytes(Charset.forName("UTF-8")));
             } else {
                 out.write(xml.toBinary());

@@ -142,6 +142,10 @@ public class KbinXml {
         }
     }
 
+    public Document getDocument() {
+        return xmlDoc;
+    }
+
     private void fromText(byte[] input) {
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
